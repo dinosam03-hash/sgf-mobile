@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<meta name="theme-color"
+content="#2563EB">
+
+<title>SGF Mobile PRO</title>
+
+<link
+rel="manifest"
+href="manifest.json">
+
+<link
+rel="stylesheet"
+href="style.css">
+
+</head>
+
+<body>
+
+<header class="topo">
+
+<div class="logo">
+
+💰 SGF
+
+<span>PRO MOBILE</span>
+
+</div>
+
+<div id="statusFinanceiro">
+
+Situação Estável
+
+</div>
+
+</header>
+
+<main>
+
+<!-- DASHBOARD -->
+
+<section
+id="dashboard"
+class="pagina ativa">
+
+<div class="cards">
+
+<div class="card">
+
+<div class="titulo">
+
+Saldo Atual
+
+</div>
+
+<div
+class="valor verde"
+id="saldoAtual">
+
+R$ 0,00
+
+</div>
+
+</div>
+
+<div class="card">
+
+<div class="titulo">
+
+Entradas
+
+</div>
+
+<div
+class="valor azul"
+id="totalEntradas">
+
+R$ 0,00
+
+</div>
+
+</div>
+
+<div class="card">
+
+<div class="titulo">
+
+Saídas
+
+</div>
+
+<div
+class="valor vermelho"
+id="totalSaidas">
+
+R$ 0,00
+
+</div>
+
+</div>
+
+<div class="card">
+
+<div class="titulo">
+
+Compras
+
+</div>
+
+<div
+class="valor amarelo"
+id="totalCompras">
+
+0
+
+</div>
+
+</div>
+
+</div>
+
+<div class="panel">
+
+<h2>
+
+Resumo Financeiro
+
+</h2>
+
+<div id="resumoFinanceiro">
+
+Nenhuma movimentação.
+
+</div>
+
+</div>
+
+</section>
+
+<!-- MOVIMENTAÇÃO -->
+
+<section
+id="movimentacao"
+class="pagina">
+
+<div class="panel">
+
+<h2>
+
+Movimentação
+
+</h2>
+
+<input
+id="valorMov"
+type="number"
+placeholder="Valor">
+
+<input
+id="descMov"
+type="text"
+placeholder="Descrição">
+
+<select id="categoriaMov">
+
+<option>Geral</option>
+
+<option>Missões</option>
+
+<option>Equipamentos</option>
+
+<option>Alimentação</option>
+
+<option>Transporte</option>
+
+<option>Tecnologia</option>
+
+<option>Outros</option>
+
+</select>
+
+<input
+id="autorMov"
+type="text"
+placeholder="Responsável"
+value="Leonardo">
+
+<button
+class="verdeBtn"
+onclick="adicionarEntrada()">
+
+➕ Adicionar
+
+</button>
+
+<button
+class="vermelhoBtn"
+onclick="retirarValor()">
+
+➖ Retirar
+
+</button>
+
+<button
+class="escuroBtn"
+onclick="retirarTudo()">
+
+💸 Retirar Tudo
+
+</button>
+
+</div>
+
+</section>
+
+<!-- COMPRAS -->
+
+<section
+id="compras"
+class="pagina">
+
+<div class="panel">
+
+<h2>
+
+Compras
+
+</h2>
+
+<input
+id="produto"
+type="text"
+placeholder="Produto">
+
+<input
+id="quantidade"
+type="number"
+placeholder="Quantidade">
+
+<input
+id="preco"
+type="number"
+placeholder="Preço Unitário">
+
+<button
+class="roxoBtn"
+onclick="registrarCompra()">
+
+🛒 Registrar Compra
+
+</button>
+
+</div>
+
+<div class="panel">
+
+<h2>
+
+Histórico de Compras
+
+</h2>
+
+<div id="listaCompras">
+
+Nenhuma compra.
+
+</div>
+
+</div>
+
+</section>
+
+<!-- METAS -->
+
+<section
+id="metas"
+class="pagina">
+
+<div class="panel">
+
+<h2>
+
+Metas Financeiras
+
+</h2>
+
+<input
+id="metaNome"
+type="text"
+placeholder="Nome da Meta">
+
+<input
+id="metaValor"
+type="number"
+placeholder="Valor Alvo">
+
+<button
+class="azulBtn"
+onclick="criarMeta()">
+
+🎯 Criar Meta
+
+</button>
+
+</div>
+
+<div class="panel">
+
+<h2>
+
+Lista de Metas
+
+</h2>
+
+<div id="listaMetas">
+
+Nenhuma meta.
+
+</div>
+
+</div>
+
+</section>
+
+<!-- HISTÓRICO -->
+
+<section
+id="historico"
+class="pagina">
+
+<div class="panel">
+
+<h2>
+
+Histórico Financeiro
+
+</h2>
+
+<div id="historicoLista">
+
+Nenhum registro.
+
+</div>
+
+</div>
+
+</section>
+
+</main>
+
+<!-- MENU -->
+
+<nav class="menu">
+
+<button
+onclick="abrirPagina('dashboard')">
+
+🏠
+
+</button>
+
+<button
+onclick="abrirPagina('movimentacao')">
+
+💰
+
+</button>
+
+<button
+onclick="abrirPagina('compras')">
+
+🛒
+
+</button>
+
+<button
+onclick="abrirPagina('metas')">
+
+🎯
+
+</button>
+
+<button
+onclick="abrirPagina('historico')">
+
+📜
+
+</button>
+
+</nav>
+
+<script src="app.js"></script>
+
+<script>
+
+if (
+"serviceWorker"
+in navigator
+) {
+
+navigator
+.serviceWorker
+.register(
+"service-worker.js"
+);
+
+}
+
+</script>
+
+</body>
+
+</html>

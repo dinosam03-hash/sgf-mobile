@@ -1,0 +1,497 @@
+*{
+
+    margin:0;
+
+    padding:0;
+
+    box-sizing:border-box;
+
+}
+
+body{
+
+    background:#0B1220;
+
+    color:#E2E8F0;
+
+    font-family:
+
+    "Segoe UI",
+    sans-serif;
+
+    min-height:100vh;
+
+    padding-bottom:85px;
+
+}
+
+/* ==========================
+   HEADER
+========================== */
+
+.topo{
+
+    background:#111827;
+
+    padding:18px;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    border-bottom:
+
+    1px solid #1E293B;
+
+}
+
+.logo{
+
+    font-size:28px;
+
+    font-weight:700;
+
+    color:#38BDF8;
+
+}
+
+.logo span{
+
+    display:block;
+
+    font-size:12px;
+
+    color:#7DD3FC;
+
+}
+
+#statusFinanceiro{
+
+    font-size:13px;
+
+    font-weight:600;
+
+    color:#22C55E;
+
+}
+
+/* ==========================
+   CONTEÚDO
+========================== */
+
+main{
+
+    padding:15px;
+
+}
+
+.pagina{
+
+    display:none;
+
+}
+
+.pagina.ativa{
+
+    display:block;
+
+}
+
+/* ==========================
+   CARDS
+========================== */
+
+.cards{
+
+    display:grid;
+
+    gap:12px;
+
+    grid-template-columns:
+
+    repeat(
+        auto-fit,
+        minmax(
+            150px,
+            1fr
+        )
+    );
+
+    margin-bottom:15px;
+
+}
+
+.card{
+
+    background:#111827;
+
+    border:1px solid #1E293B;
+
+    border-radius:20px;
+
+    padding:18px;
+
+}
+
+.titulo{
+
+    color:#94A3B8;
+
+    font-size:12px;
+
+    margin-bottom:8px;
+
+    text-transform:uppercase;
+
+    font-weight:600;
+
+}
+
+.valor{
+
+    font-size:26px;
+
+    font-weight:700;
+
+}
+
+.verde{
+
+    color:#22C55E;
+
+}
+
+.azul{
+
+    color:#38BDF8;
+
+}
+
+.vermelho{
+
+    color:#F87171;
+
+}
+
+.amarelo{
+
+    color:#FBBF24;
+
+}
+
+/* ==========================
+   PAINEL
+========================== */
+
+.panel{
+
+    background:#111827;
+
+    border:1px solid #1E293B;
+
+    border-radius:20px;
+
+    padding:18px;
+
+    margin-bottom:15px;
+
+}
+
+.panel h2{
+
+    margin-bottom:15px;
+
+    color:white;
+
+    font-size:18px;
+
+}
+
+/* ==========================
+   INPUTS
+========================== */
+
+input{
+
+    width:100%;
+
+    margin-bottom:10px;
+
+    background:#1E293B;
+
+    border:none;
+
+    border-radius:14px;
+
+    color:white;
+
+    padding:14px;
+
+    font-size:15px;
+
+}
+
+input:focus{
+
+    outline:none;
+
+    border:
+
+    1px solid #2563EB;
+
+}
+
+select{
+
+    width:100%;
+
+    margin-bottom:10px;
+
+    background:#1E293B;
+
+    color:white;
+
+    border:none;
+
+    border-radius:14px;
+
+    padding:14px;
+
+    font-size:15px;
+
+}
+
+/* ==========================
+   BOTÕES
+========================== */
+
+button{
+
+    width:100%;
+
+    border:none;
+
+    padding:15px;
+
+    border-radius:14px;
+
+    color:white;
+
+    font-weight:600;
+
+    margin-top:8px;
+
+    cursor:pointer;
+
+    transition:.2s;
+
+}
+
+button:active{
+
+    transform:scale(0.98);
+
+}
+
+.azulBtn{
+
+    background:#2563EB;
+
+}
+
+.verdeBtn{
+
+    background:#16A34A;
+
+}
+
+.vermelhoBtn{
+
+    background:#DC2626;
+
+}
+
+.roxoBtn{
+
+    background:#7C3AED;
+
+}
+
+.escuroBtn{
+
+    background:#334155;
+
+}
+
+.azulBtn:hover{
+
+    background:#3B82F6;
+
+}
+
+.verdeBtn:hover{
+
+    background:#22C55E;
+
+}
+
+.vermelhoBtn:hover{
+
+    background:#EF4444;
+
+}
+
+.roxoBtn:hover{
+
+    background:#8B5CF6;
+
+}
+
+.escuroBtn:hover{
+
+    background:#475569;
+
+}
+
+/* ==========================
+   HISTÓRICO
+========================== */
+
+#historicoLista,
+#listaCompras,
+#listaMetas,
+#resumoFinanceiro{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:10px;
+
+}
+
+.item{
+
+    background:#1E293B;
+
+    border-radius:12px;
+
+    padding:12px;
+
+    border-left:
+
+    4px solid #2563EB;
+
+}
+
+.itemTitulo{
+
+    font-weight:600;
+
+    margin-bottom:4px;
+
+}
+
+.itemInfo{
+
+    font-size:13px;
+
+    color:#94A3B8;
+
+}
+
+/* ==========================
+   MENU INFERIOR
+========================== */
+
+.menu{
+
+    position:fixed;
+
+    left:0;
+
+    right:0;
+
+    bottom:0;
+
+    background:#111827;
+
+    border-top:
+
+    1px solid #1E293B;
+
+    display:flex;
+
+    justify-content:space-around;
+
+    padding:10px;
+
+}
+
+.menu button{
+
+    width:60px;
+
+    height:60px;
+
+    border-radius:18px;
+
+    background:#1E293B;
+
+    margin:0;
+
+    font-size:24px;
+
+}
+
+.menu button:hover{
+
+    background:#2563EB;
+
+}
+
+/* ==========================
+   SCROLL
+========================== */
+
+::-webkit-scrollbar{
+
+    width:8px;
+
+}
+
+::-webkit-scrollbar-track{
+
+    background:#0B1220;
+
+}
+
+::-webkit-scrollbar-thumb{
+
+    background:#334155;
+
+    border-radius:10px;
+
+}
+
+/* ==========================
+   MOBILE
+========================== */
+
+@media(max-width:600px){
+
+    .valor{
+
+        font-size:22px;
+
+    }
+
+    .logo{
+
+        font-size:22px;
+
+    }
+
+}
