@@ -104,7 +104,7 @@ function atualizarDashboard() {
 
     let saidas = 0;
 
-    dados.historico.forEach(
+    (dados.compras || []).forEach(
 
         mov => {
 
@@ -733,7 +733,7 @@ function atualizarMetas() {
 
     let html = "";
 
-    dados.metas.forEach(
+    (dados.metas || []).forEach(
 
         m => {
 
@@ -857,15 +857,21 @@ async function iniciarFirebase() {
     );
 
     if (
+    docSnap.exists()
+) {
 
-        docSnap.exists()
+    dados = {
 
-    ) {
+        saldo: 0,
+        historico: [],
+        compras: [],
+        metas: [],
 
-        dados =
-        docSnap.data();
+        ...docSnap.data()
 
-    }
+    };
+
+}
 
     window.firebaseOnSnapshot(
 
