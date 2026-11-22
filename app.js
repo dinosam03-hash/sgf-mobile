@@ -1,12 +1,6 @@
 const RESERVA_MINIMA = 50;
 
-let dados = JSON.parse(
-
-    localStorage.getItem(
-        "sgf_dados"
-    )
-
-) || {
+let dados = {
 
     saldo: 0,
 
@@ -22,15 +16,21 @@ let dados = JSON.parse(
    SALVAR
 ======================== */
 
-function salvar() {
+async function salvar() {
 
-    localStorage.setItem(
+    if (
+        !window.firebaseDB
+    ) return;
 
-        "sgf_dados",
+    await window.firebaseSetDoc(
 
-        JSON.stringify(
-            dados
-        )
+        window.firebaseDoc(
+            window.firebaseDB,
+            "sgf",
+            "principal"
+        ),
+
+        dados
 
     );
 
@@ -836,6 +836,64 @@ function backup() {
 
 }
 
+async function iniciarFirebase() {
+
+    const referencia =
+
+    window.firebaseDoc(
+
+        window.firebaseDB,
+
+        "sgf",
+
+        "principal"
+
+    );
+
+    const docSnap =
+
+    await window.firebaseGetDoc(
+        referencia
+    );
+
+    if (
+
+        docSnap.exists()
+
+    ) {
+
+        dados =
+        docSnap.data();
+
+    }
+
+    window.firebaseOnSnapshot(
+
+        referencia,
+
+        snapshot => {
+
+            if (
+
+                snapshot.exists()
+
+            ) {
+
+                dados =
+                snapshot.data();
+
+                atualizarTudo();
+
+            }
+
+        }
+
+    );
+
+    atualizarTudo();
+
+}
+
 /* ========================
    ATUALIZAÇÃO GERAL
 ======================== */
@@ -854,4 +912,14 @@ function atualizarTudo() {
 
 }
 
-atualizarTudo();
+window.addEventListener(
+
+    "load",
+
+    () => {
+
+        iniciarFirebase();
+
+    }
+
+);
