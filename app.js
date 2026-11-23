@@ -763,19 +763,38 @@ function atualizarMetas() {
 
         m => {
 
-            let perc = Math.min(
+            if (
 
-                100,
+                !m ||
+                !m.nome ||
+                !m.valor
 
-                Math.round(
-                    (
-                        dados.saldo
-                        /
-                        m.valor
-                    ) * 100
-                )
+            ) return;
 
-            );
+            let perc = 0;
+
+            if (
+
+                m.valor > 0
+
+            ) {
+
+                perc = Math.min(
+
+                    100,
+
+                    Math.round(
+
+                        (
+                            dados.saldo /
+                            m.valor
+                        ) * 100
+
+                    )
+
+                );
+
+            }
 
             html += `
 
@@ -790,10 +809,7 @@ function atualizarMetas() {
                 <div class="itemInfo">
 
                     Alvo:
-
-                    ${money(
-                        m.valor
-                    )}
+                    ${money(m.valor)}
 
                 </div>
 
@@ -811,10 +827,31 @@ function atualizarMetas() {
 
     );
 
+    if (
+
+        html === ""
+
+    ) {
+
+        html = `
+
+        <div class="item">
+
+            Nenhuma meta cadastrada.
+
+        </div>
+
+        `;
+
+    }
+
     document
+
     .getElementById(
         "listaMetas"
-    ).innerHTML = html;
+    )
+
+    .innerHTML = html;
 
 }
 
@@ -929,6 +966,10 @@ async function iniciarFirebase() {
                     ...snapshot.data()
 
                 };
+                console.log(
+    "SNAPSHOT:",
+    dados
+);
 
                 atualizarTudo();
 
