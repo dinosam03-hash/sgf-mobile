@@ -472,18 +472,23 @@ function retirarTudo() {
 function registrarCompra() {
 
     let produto =
+
     document
+
     .getElementById(
         "produto"
     )
+
     .value;
 
     let qtd = Number(
 
         document
+
         .getElementById(
             "quantidade"
         )
+
         .value
 
     );
@@ -491,14 +496,17 @@ function registrarCompra() {
     let preco = Number(
 
         document
+
         .getElementById(
             "preco"
         )
+
         .value
 
     );
 
     let total =
+
     qtd * preco;
 
     if (
@@ -568,10 +576,7 @@ function registrarCompra() {
 
     salvar();
 
-    atualizarTudo();
-
 }
-
 /* ========================
    META
 ======================== */
@@ -579,18 +584,23 @@ function registrarCompra() {
 function criarMeta() {
 
     let nome =
+
     document
+
     .getElementById(
         "metaNome"
     )
+
     .value;
 
     let valor = Number(
 
         document
+
         .getElementById(
             "metaValor"
         )
+
         .value
 
     );
@@ -617,10 +627,7 @@ function criarMeta() {
 
     salvar();
 
-    atualizarTudo();
-
 }
-
 /* ========================
    LISTAS
 ======================== */
@@ -629,7 +636,7 @@ function atualizarHistorico() {
 
     let html = "";
 
-    dados.historico.forEach(
+    (dados.historico || []).forEach(
 
         mov => {
 
@@ -684,9 +691,17 @@ function atualizarCompras() {
 
     let html = "";
 
-    dados.compras.forEach(
+    (dados.compras || []).forEach(
 
         c => {
+
+            if (
+
+                !c ||
+
+                !c.produto
+
+            ) return;
 
             html += `
 
@@ -719,9 +734,20 @@ function atualizarCompras() {
     );
 
     document
+
     .getElementById(
         "listaCompras"
-    ).innerHTML = html;
+    )
+
+    .innerHTML = html;
+
+    if (
+
+    !c ||
+
+    !c.produto
+
+) return;
 
 }
 
@@ -857,21 +883,26 @@ async function iniciarFirebase() {
     );
 
     if (
-    docSnap.exists()
-) {
 
-    dados = {
+        docSnap.exists()
 
-        saldo: 0,
-        historico: [],
-        compras: [],
-        metas: [],
+    ) {
 
-        ...docSnap.data()
+        dados = {
 
-    };
+            saldo: 0,
 
-}
+            historico: [],
+
+            compras: [],
+
+            metas: [],
+
+            ...docSnap.data()
+
+        };
+
+    }
 
     window.firebaseOnSnapshot(
 
@@ -885,8 +916,19 @@ async function iniciarFirebase() {
 
             ) {
 
-                dados =
-                snapshot.data();
+                dados = {
+
+                    saldo: 0,
+
+                    historico: [],
+
+                    compras: [],
+
+                    metas: [],
+
+                    ...snapshot.data()
+
+                };
 
                 atualizarTudo();
 
